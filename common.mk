@@ -92,13 +92,42 @@ PRODUCT_PACKAGES += \
 
 # Rootdir
 PRODUCT_PACKAGES += \
+    init.class_main.sh \
+    init.crda.sh \
+    init.mdm.sh \
+    init.qcom.class_core.sh \
+    init.qcom.coex.sh \
+    init.qcom.crashdata.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.efs.sync.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.sdio.sh \
+    init.qcom.sensors.sh \
+    init.qcom.sh \
+    init.qcom.usb.sh \
+    init.qti.fm.sh \
+    init.qti.ims.sh \
+    qca6234-service.sh
+
+PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.carrier.rc \
+    init.msm.usb.configfs.rc \
+    init.qcom.factory.rc \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    init.samsung.bsp.rc \
+    init.samsung.display.rc \
     init.samsung.rc \
-    init.usb_accessory.rc
+    init.starqlte.rc \
+    init.starqltedcm.rc \
+    init.target.rc \
+    init.rc \
+    ueventd.rc
 
 # Recovery
-PRODUCT_PACKAGES += \
-    init.recovery.sdm845.rc
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.qcom.rc:root/init.recovery.qcom.rc
 
 # SP-NDK
 PRODUCT_PACKAGES += \

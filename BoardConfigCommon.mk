@@ -86,7 +86,7 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := \ DTC_EXT=$(shell pwd)/prebuilts/misc/$(HOST_O
 
 # Mkbootimg
 BOARD_CUSTOM_BOOTIMG := true
-BOARD_CUSTOM_BOOTIMG_MK := $(COMMON_PATH)/configs/hardware/samsung/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 
 # Partitions
 BOARD_ROOT_EXTRA_FOLDERS := efs
@@ -110,18 +110,21 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
 
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-TARGET_SYSTEM_PROP += $(COMMON_PATH)/properties/system.prop
-TARGET_PRODUCT_PROP += $(COMMON_PATH)/properties/product.prop
+TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
+TARGET_PRODUCT_PROP += $(COMMON_PATH)/product.prop
 
 # Recovery
 BOARD_HAS_DOWNLOAD_MODE := true
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/recovery/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdit/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# Sepolicy
+# Renderer
+TARGET_USES_VULKAN := true
+USE_OPENGL_RENDERER := true
 
+# Sepolicy
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public

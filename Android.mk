@@ -16,7 +16,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter starqltechn star2qltechn crownqltechn, $(TARGET_DEVICE)),)
+ifneq ($(filter starqltedcm star2qltechn crownqltechn, $(TARGET_DEVICE)),)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
