@@ -25,6 +25,11 @@ PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/etc/audio_policy_configuration.xml
 
+# Apex
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    Settings \
+    SystemUIGoogle
+
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
 
