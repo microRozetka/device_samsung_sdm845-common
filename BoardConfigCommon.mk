@@ -69,6 +69,9 @@ endif
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
 
+## Fingerprint
+TARGET_SEC_FP_HAS_FINGERPRINT_GESTURES := true
+
 # Graphics
 TARGET_USES_HWC2 := true
 OVERRIDE_RS_DRIVER := libRSDriverArm.so
@@ -77,6 +80,9 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 # Hardware
 BOARD_USES_QCOM_HARDWARE := true
 BUILD_WITHOUT_VENDOR := true
+
+# HWUI
+HWUI_COMPILE_FOR_PERF := true
 
 # Kernel SDM845
 BOARD_KERNEL_BASE := 0x80000000
