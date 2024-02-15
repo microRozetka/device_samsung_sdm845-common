@@ -19,7 +19,6 @@ BOARD_VENDOR := samsung
 COMMON_PATH := device/samsung/sdm845-common
 
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-BUILD_BROKEN_DUP_RULES := true
 
 # Include
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
@@ -43,13 +42,6 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := kryo385
 TARGET_EXCLUDES_AUDIOFX := true
 USE_XML_AUDIO_POLICY_CONF := 1
 
-# Apex
-DEXPREOPT_GENERATE_APEX_IMAGE := true
-OVERRIDE_PRODUCT_COMPRESSED_APEX := false
-
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_PATH)/bluetooth
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := sdm845
 TARGET_NO_BOOTLOADER := true
@@ -58,19 +50,8 @@ TARGET_NO_RADIOIMAGE := true
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-# Dexpreopt
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= false
-    WITH_DEXPREOPT := true
-  endif
-endif
-
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
-
-## Fingerprint
-TARGET_SEC_FP_HAS_FINGERPRINT_GESTURES := true
 
 # Graphics
 TARGET_USES_HWC2 := true
@@ -80,9 +61,6 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 # Hardware
 BOARD_USES_QCOM_HARDWARE := true
 BUILD_WITHOUT_VENDOR := true
-
-# HWUI
-HWUI_COMPILE_FOR_PERF := true
 
 # Kernel SDM845
 BOARD_KERNEL_BASE := 0x80000000
@@ -96,6 +74,7 @@ BOARD_KERNEL_CMDLINE += video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=
 BOARD_KERNEL_CMDLINE += ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 $
 BOARD_KERNEL_CMDLINE += androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware_mnt/image/ loop.max_part=7
+BOARD_KERNEL_CMDLINE += root=/dev/block/sda22
 
 TARGET_KERNEL_SOURCE := kernel/samsung/sdm845
 TARGET_KERNEL_CLANG_COMPILE := false
@@ -128,48 +107,31 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
 
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
-TARGET_PRODUCT_PROP += $(COMMON_PATH)/product.prop
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
+TARGET_PRODUCT_PROP += $(COMMON_PATH)/product.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
+TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
 
 # Recovery
 BOARD_HAS_DOWNLOAD_MODE := true
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/recovery/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# Renderer
-TARGET_USES_VULKAN := true
-USE_OPENGL_RENDERER := true
-
 # Sepolicy
-BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+
+#BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
-PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
+#PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
 
 # VNDK
 BOARD_VNDK_VERSION := current
-PRODUCT_TARGET_VNDK_VERSION := 29
+PRODUCT_TARGET_VNDK_VERSION := 30
 
 # Vintf
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/manifest.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/vintf/compatibility_matrix.xml
-
-# WiFi
-BOARD_WLAN_DEVICE := qcwcn
-BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-WIFI_DRIVER_DEFAULT := qca_cld3
-WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
-WIFI_DRIVER_STATE_OFF := "OFF"
-WIFI_DRIVER_STATE_ON := "ON"
-WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
-WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
-WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
 -include vendor/samsung/sdm845-common/BoardConfigVendor.mk
