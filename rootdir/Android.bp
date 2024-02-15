@@ -35,9 +35,52 @@ sh_binary {
     vendor: true,
 }
 
+// Init configuration files
+prebuilt_etc {
+    name: "init.carrier.rc",
+    src: "etc/init.carrier.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.msm.usb.configfs.rc",
+    src: "etc/init.msm.usb.configfs.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.qcom.factory.rc",
+    src: "etc/init.qcom.factory.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
 prebuilt_etc {
     name: "init.qcom.rc",
     src: "etc/init.qcom.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.qcom.usb.rc",
+    src: "etc/init.qcom.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.samsung.bsp.rc",
+    src: "etc/init.samsung.bsp.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.samsung.display.rc",
+    src: "etc/init.samsung.display.rc",
     sub_dir: "init/hw",
     vendor: true,
 }
@@ -50,8 +93,22 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.usb_accessory.rc",
-    src: "etc/init.usb_accessory.rc",
+    name: "init.starqlte.rc",
+    src: "etc/init.starqlte.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.starqltedcm.rc",
+    src: "etc/init.starqltedcm.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.target.rc",
+    src: "etc/init.target.rc",
     sub_dir: "init/hw",
     vendor: true,
 }

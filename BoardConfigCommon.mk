@@ -15,10 +15,10 @@
 #
 
 BOARD_VENDOR := samsung
+
 COMMON_PATH := device/samsung/sdm845-common
 
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-BUILD_BROKEN_DUP_RULES := true
 
 # Include
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
@@ -42,9 +42,6 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := kryo385
 TARGET_EXCLUDES_AUDIOFX := true
 USE_XML_AUDIO_POLICY_CONF := 1
 
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_PATH)/configs/bluetooth
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := sdm845
 TARGET_NO_BOOTLOADER := true
@@ -52,14 +49,6 @@ TARGET_NO_RADIOIMAGE := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
-
-# Dexpreopt
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= false
-    WITH_DEXPREOPT := true
-  endif
-endif
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
@@ -72,9 +61,6 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 # Hardware
 BOARD_USES_QCOM_HARDWARE := true
 BUILD_WITHOUT_VENDOR := true
-
-# HWUI
-HWUI_COMPILE_FOR_PERF := true
 
 # Kernel SDM845
 BOARD_KERNEL_BASE := 0x80000000
@@ -137,6 +123,7 @@ PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
 
 # VNDK
 BOARD_VNDK_VERSION := current
+PRODUCT_TARGET_VNDK_VERSION := 30
 
 # Vintf
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/manifest.xml
