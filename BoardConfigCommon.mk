@@ -15,10 +15,11 @@
 #
 
 BOARD_VENDOR := samsung
-
 COMMON_PATH := device/samsung/sdm845-common
 
+# Build rules
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_DUP_RULES := true
 
 # Include
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
@@ -62,7 +63,10 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 BOARD_USES_QCOM_HARDWARE := true
 BUILD_WITHOUT_VENDOR := true
 
-# Kernel SDM845
+# HWUI
+HWUI_COMPILE_FOR_PERF := true
+
+# Kernel
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -123,7 +127,6 @@ PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
 
 # VNDK
 BOARD_VNDK_VERSION := current
-PRODUCT_TARGET_VNDK_VERSION := 30
 
 # Vintf
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/manifest.xml
