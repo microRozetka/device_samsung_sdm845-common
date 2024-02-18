@@ -22,6 +22,4 @@
          have distinct intensity levels -->
     <bool name="config_vibration_supports_multiple_intensities">true</bool>
 
-    <!-- Whether device supports lift to wake -->
-    <bool name="config_supportsLiftToWake">true</bool>
 </resources>
