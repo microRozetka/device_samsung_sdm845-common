@@ -1,0 +1,51 @@
+#
+# Copyright (C) 2018 The LineageOS Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# Device specific property overrides
+
+# Surfaceflinger
+debug.sf.latch_unsignaled=1
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+ro.surface_flinger.supports_background_blur=1
+ro.sf.blurs_are_expensive=1
+
+# Telephony
+ro.telephony.default_network=10,10
+
+
+# Process pool
+persist.device_config.runtime_native.usap_pool_enabled=true
+
+# Tones
+ro.config.vc_call_vol_steps=7
+
+# Google Photos
+debug.photos.eraser_camo=1
+debug.photos.eraser_suggestion=1
+debug.photos.force_pixel_eol=1
+debug.photos.p_editr.eraser=1
+
+# Set the sample rate for the BT device
+persist.bluetooth.samsung_samplerate.supported=true
+
+# Audio
+af.fast_track_multiplier=1
+audio.deep_buffer.media=true
+audio.offload.min.duration.secs=30
+audio.offload.video=true
+audio.sys.noisy.broadcast.delay=500
+audio.sys.offload.pstimeout.secs=3
+ro.af.client_heap_size_kbyte=7168
