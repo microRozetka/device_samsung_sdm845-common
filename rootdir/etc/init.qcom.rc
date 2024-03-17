@@ -143,12 +143,12 @@ on boot
     mkdir /efs/bluetooth 0770 system bluetooth
     # if already exist
     chown system bluetooth /efs/bluetooth
-    chown system bluetooth /efs/bluetooth/bt_addr
+    chown system bluetooth /mnt/vendor/efs/bluetooth/bt_addr
     chmod 0770 /efs/bluetooth
-    chmod 0640 /efs/bluetooth/bt_addr
+    chmod 0640 /mnt/vendor/efs/bluetooth/bt_addr
 
     # permissions for bluetooth.
-    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    setprop ro.bt.bdaddr_path "/mnt/vendor/efs/bluetooth/bt_addr"
     chown bluetooth bluetooth ro.bt.bdaddr_path
     chown bluetooth bluetooth /dev/ttyHS0
     chmod 0660 /dev/ttyHS0
