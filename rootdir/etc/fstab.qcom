@@ -1,5 +1,6 @@
 #<src> <mnt_point> <type> <mnt_flags and options> <fs_mgr_flags>
 /dev/block/platform/soc/1d84000.ufshc/by-name/system /system ext4 ro,errors=panic                                      wait
+/dev/block/platform/soc/1d84000.ufshc/by-name/vendor                               /vendor                   ext4    ro,barrier=1,discard                                 wait
 /dev/block/platform/soc/1d84000.ufshc/by-name/by-name/CACHE /cache ext4 noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic wait,check
 /dev/block/platform/soc/1d84000.ufshc/by-name/by-name/USERDATA /data ext4 noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic wait,check,encryptable=foote$
 /dev/block/platform/soc/1d84000.ufshc/by-name/EFS /mnt/vendor/efs ext4 noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic wait,check
