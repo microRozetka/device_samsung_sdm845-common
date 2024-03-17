@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
 <!--
      Copyright (C) 2024 The The Android Open Source Project
 
@@ -14,7 +14,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <bool name="call_recording_enabled">true</bool>
-    <integer name="call_recording_audio_source">4</integer>
-</resources>
+
+<carrier_config_list>
+    <carrier_config>
+        <boolean name="show_4g_for_lte_data_icon_bool" value="false"/>
+    </carrier_config>
+</carrier_config_list>
