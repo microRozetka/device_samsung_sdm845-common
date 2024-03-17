@@ -35,13 +35,23 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9340.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_wcd9340.xml \
     $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
 
+# ANT+
+PRODUCT_PACKAGES += \
+    AntHalService-Soong
+
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
 
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-service \
-    android.hardware.bluetooth@1.0-impl:64
+    android.hardware.bluetooth@1.0-impl:64 \
+    android.hardware.bluetooth@1.0.vendor \
+    liba2dpoffload
+
+# Component overrides
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
 
 # Fonts
 TARGET_INCLUDE_CUSTOM_FONTS := false
@@ -147,6 +157,18 @@ PRODUCT_EXTRA_VNDK_VERSIONS := 29
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
-    WifiOverlay
+    android.hardware.wifi@1.3-service \
+    hostapd \
+    libwifi-hal-qcom \
+    libwpa_client \
+    WifiOverlay \
+    wifi-mac-generator \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
 $(call inherit-product, vendor/samsung/sdm845-common/sdm845-common-vendor.mk)
