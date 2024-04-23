@@ -107,9 +107,6 @@ PRODUCT_PACKAGES += \
     android.hardware.power-service.samsung-libperfmgr \
     android.hardware.power@1.2.vendor
 
-PRODUCT_PACKAGES += \
-    power.qcom
-
 # Rootdir
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -157,14 +154,14 @@ PRODUCT_EXTRA_VNDK_VERSIONS := 29
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.3-service \
+    android.hardware.wifi-service \
     hostapd \
     libwifi-hal-qcom \
     libwpa_client \
     WifiOverlay \
-    wifi-mac-generator \
     wpa_supplicant \
     wpa_supplicant.conf
+
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \

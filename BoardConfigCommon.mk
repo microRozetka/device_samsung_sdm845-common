@@ -14,11 +14,14 @@
 # limitations under the License.
 #
 
-BOARD_VENDOR := samsung
+TARGET_DISABLE_EPPE := true
 
+BOARD_VENDOR := samsung
 COMMON_PATH := device/samsung/sdm845-common
 
+# Build rules
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_DUP_RULES := true
 
 # Include
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
