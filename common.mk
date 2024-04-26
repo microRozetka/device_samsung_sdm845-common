@@ -39,6 +39,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     AntHalService-Soong
 
+# APEX
+OVERRIDE_PRODUCT_COMPRESSED_APEX := false
+
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
 
